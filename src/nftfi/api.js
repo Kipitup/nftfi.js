@@ -10,13 +10,21 @@ class API {
   }
 
   async get(options) {
+    let authToken = null
     const uri = `${this.#config.api.baseURI}/${options.uri}`;
     const params = options?.params;
-    const authToken = await this.#auth.getToken();
-    const headers = {
-      'X-API-Key': this.#config.api.key,
-      Authorization: `Bearer ${authToken}`
-    };
+    if (options.uri !== "offers") {
+      authToken = await this.#auth.getToken();
+    }
+    const headers = authToken === null ?
+      {
+        'X-API-Key': this.#config.api.key,
+      }
+      :
+      {
+        'X-API-Key': this.#config.api.key,
+        Authorization: `Bearer ${authToken}`
+      }
     const result = await this.#http.get(uri, {
       headers,
       params
