@@ -13,7 +13,7 @@ class API {
     let authToken = null
     const uri = `${this.#config.api.baseURI}/${options.uri}`;
     const params = options?.params;
-    if (options.uri !== "offers" || options.uri !== "loans") {
+    if (options.uri !== "offers" && options.uri !== "loans") {
       authToken = await this.#auth.getToken();
     }
     const headers = authToken === null ?
