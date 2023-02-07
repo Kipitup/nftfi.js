@@ -38,7 +38,8 @@ class Loans {
     let response = await this.#api.get({
       uri: 'loans',
       params: {
-        accountAddress: this.#account.getAddress(),
+        // kiwi: original line : accountAddress: this.#account.getAddress(),
+        accountAddress: options.filters.address,
         counterparty: options.filters.counterparty,
         status: options.filters.status
       }
