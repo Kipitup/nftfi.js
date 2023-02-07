@@ -106,18 +106,18 @@ class Offers {
    * });
    */
   async get(options = {}) {
-    const start = Date.now()
-    console.log(Date.now(), "nftfi start")
+    // const start = Date.now()
+    // console.log(Date.now(), "nftfi start")
     const params = this.#offersHelper.getParams(options);
     try {
       const response = await this.#api.get({
         uri: 'offers',
         params
       });
-      console.log("/*************/ Call 1 took: ", Date.now() - start)
+      // console.log("/*************/ Call 1 took: ", Date.now() - start)
       let results = response?.results.map(this.#helper.addCurrencyUnit) || [];
       const shouldNotValidate = options?.validation?.check === false;
-      console.log({ shouldNotValidate }, options?.validation?.check)
+      // console.log({ shouldNotValidate }, options?.validation?.check)
       if (!shouldNotValidate && results?.length > 0) {
         results = await Promise.all(
           results.map(async offer => {
@@ -129,7 +129,7 @@ class Offers {
       if (options?.pagination) {
         return this.#result.handle({ pagination: { total: response?.pagination?.total }, results });
       }
-      console.log("/*************/ Call 2 took: ", Date.now() - start)
+      // console.log("/*************/ Call 2 took: ", Date.now() - start)
       return results;
     } catch (e) {
       return this.#error.handle(e);
