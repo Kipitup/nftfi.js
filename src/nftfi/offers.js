@@ -117,7 +117,7 @@ class Offers {
       console.log("/*************/ Call 1 took: ", Date.now() - start)
       let results = response?.results.map(this.#helper.addCurrencyUnit) || [];
       const shouldNotValidate = options?.validation?.check === false;
-      console.log({ shouldNotValidate })
+      console.log({ shouldNotValidate }, options?.validation?.check)
       if (!shouldNotValidate && results?.length > 0) {
         results = await Promise.all(
           results.map(async offer => {
