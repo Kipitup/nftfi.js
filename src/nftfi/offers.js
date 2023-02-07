@@ -106,12 +106,14 @@ class Offers {
    * });
    */
   async get(options = {}) {
+    const start = Date.now()
     const params = this.#offersHelper.getParams(options);
     try {
       const response = await this.#api.get({
         uri: 'offers',
         params
       });
+      console.log("/*************/ Call 1 took: ", Date.now() - start)
       let results = response?.results.map(this.#helper.addCurrencyUnit) || [];
       const shouldNotValidate = options?.validation?.check === false;
       if (!shouldNotValidate && results?.length > 0) {
