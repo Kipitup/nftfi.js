@@ -29,14 +29,6 @@ class API {
       headers,
       params
     });
-
-    if (options.uri === 'loans') {
-      const response = {
-        options,
-        result: result.data
-      }
-      return response
-    }
     return result.data;
   }
 

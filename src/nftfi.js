@@ -172,7 +172,7 @@ export default {
     const nftfi = new NFTfi({ config, account, listings, offers, loans, erc20, erc721, bundles, immutables, utils });
 
     if (options?.logging?.verbose === true) {
-      console.log('NFTfi SDK initialised. ', options);
+      console.log('NFTfi SDK initialised. ');
     }
 
     return nftfi;
