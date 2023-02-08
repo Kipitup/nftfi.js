@@ -35,6 +35,7 @@ class Loans {
    * });
    */
   async get(options) {
+    console.log("NFTFI Loans options: ", options)
     let response = await this.#api.get({
       uri: 'loans',
       params: {

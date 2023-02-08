@@ -159,8 +159,8 @@ export default {
       v2_1: loanFixedV2_1,
       collection: loanFixedCollection
     });
-    const loans = new Loans({ api, account, fixed: loanFixed, config, helper });
     const offersSignatures = new OffersSignatures({ account, ethers, config });
+    const loans = new Loans({ api, account, fixed: loanFixed, config, helper });
     const erc20 = new Erc20({ config, account, contractFactory, BN });
     const offersHelper = new OffersHelper({ BN, Number, utils, offersSignatures, config, account });
     const offersValidator = new OffersValidator({ erc20, ethers, config, contractFactory });
@@ -172,7 +172,7 @@ export default {
     const nftfi = new NFTfi({ config, account, listings, offers, loans, erc20, erc721, bundles, immutables, utils });
 
     if (options?.logging?.verbose === true) {
-      console.log('NFTfi SDK initialised.');
+      console.log('NFTfi SDK initialised. ', options);
     }
 
     return nftfi;
