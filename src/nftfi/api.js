@@ -16,7 +16,7 @@ class API {
     if (options.uri !== "offers" && options.uri !== "loans") {
       authToken = await this.#auth.getToken();
     }
-    if (options.url === 'loans') console.log({ options })
+    if (options.uri === 'loans') console.log({ options })
     const headers = authToken === null ?
       {
         'X-API-Key': this.#config.api.key,
