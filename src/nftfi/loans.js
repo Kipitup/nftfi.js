@@ -44,9 +44,10 @@ class Loans {
         status: options.filters.status
       }
     });
-    let loans = response['results'];
-    loans = loans.map(this.#helper.addCurrencyUnit);
-    return loans;
+    return response
+    // let loans = response['results'];
+    // loans = loans.map(this.#helper.addCurrencyUnit);
+    // return loans;
   }
 
   /**
